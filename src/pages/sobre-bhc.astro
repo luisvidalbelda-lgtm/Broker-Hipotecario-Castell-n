@@ -1,0 +1,114 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BreadcrumbNav from '../components/BreadcrumbNav.astro';
+import HeroInterior from '../components/HeroInterior.astro';
+import CtaBand from '../components/CtaBand.astro';
+import WhyBHC from '../components/WhyBHC.astro';
+import { Image } from 'astro:assets';
+import asesoramientoImg from '/public/img/asesoramiento-profesional.webp';
+---
+
+<Layout
+  title="Sobre BHC | Broker Hipotecario independiente en Castellón"
+  description="Conoce a BHC, tu broker hipotecario independiente en Castellón. Trabajamos para ti, no para los bancos. Estudio gratuito y acompañamiento hasta la firma."
+>
+  <BreadcrumbNav items={[{ name: 'Sobre BHC' }]} />
+
+  <HeroInterior
+    title="Sobre BHC"
+    subtitle="No somos un banco. No somos un comercial. Somos tu intermediario independiente en Castellón."
+    ctaPrimaryHref="/contacto"
+  />
+
+  <section class="bg-white">
+    <div class="max-w-6xl mx-auto px-4 md:px-6 py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <div class="lg:col-span-7">
+        <h2>Quiénes somos</h2>
+        <div class="mt-6 space-y-5 text-text-base leading-relaxed">
+          <p>
+            BHC | Broker Hipotecario Castellón nace para resolver un problema concreto: <strong>cuando vas a pedir una hipoteca,
+            ir banco por banco es agotador, lento y al final no sabes si te están dando la mejor oferta del mercado o solo la que les
+            interesa colocarte a ti</strong>.
+          </p>
+          <p>
+            Como broker independiente, nuestro trabajo es el inverso: tú nos cuentas tu caso una sola vez, y nosotros llevamos tu
+            operación a las entidades que mejor encajan con tu perfil. Recibimos varias ofertas, las comparamos contigo y tú decides
+            con información completa.
+          </p>
+        </div>
+
+        <h2 class="mt-12">Nuestra forma de trabajar</h2>
+        <div class="mt-6 space-y-5 text-text-base leading-relaxed">
+          <p>
+            Trabajamos con más de 30 entidades bancarias activas en el mercado español. No tenemos contratos de exclusividad con
+            ninguna. Eso significa que <strong>no tenemos incentivo para llevarte a un banco concreto</strong>; nuestro incentivo
+            coincide con el tuyo: cerrar la operación con las mejores condiciones posibles.
+          </p>
+          <p>
+            Nuestro servicio para ti es <strong>gratuito</strong>. Los bancos nos retribuyen por traerles operaciones que cumplen
+            sus criterios — pero esa retribución es independiente del interés que te dan a ti. Si un banco nos paga más pero te
+            ofrece peor condición, no te lo vamos a recomendar.
+          </p>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5">
+        <div class="rounded-2xl overflow-hidden shadow-card border border-border sticky top-24">
+          <Image src={asesoramientoImg} alt="Asesoramiento hipotecario profesional con cliente firmando documentación" width={800} height={1000} class="w-full h-auto" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-bg-soft">
+    <div class="max-w-3xl mx-auto px-4 md:px-6 py-16">
+      <h2>Broker independiente vs. ir directo al banco</h2>
+      <div class="mt-6 space-y-5 text-text-base leading-relaxed">
+        <p>
+          Cuando vas a una sucursal bancaria, te ofrecen <strong>su</strong> producto. No el mejor del mercado. Y tampoco te
+          dicen los productos vinculados que podrías evitarte (seguros, planes de pensiones, tarjetas) que disparan el coste real
+          de la hipoteca.
+        </p>
+        <p>
+          Cuando vienes a BHC, vemos toda la foto: varias ofertas comparadas, sus letras pequeñas, sus vinculaciones, y la TAE real.
+          El proceso es el mismo en duración (4-8 semanas), pero terminas firmando una hipoteca que te ahorra años de intereses.
+        </p>
+      </div>
+
+      <h2 class="mt-12">Nuestro compromiso</h2>
+      <ul class="mt-6 space-y-3">
+        <li class="flex items-start gap-3 bg-white rounded-lg border border-border p-4">
+          <span class="text-primary-600 font-bold">✓</span>
+          <span><strong>Transparencia total:</strong> ves todas las ofertas que recibimos, sin filtrar.</span>
+        </li>
+        <li class="flex items-start gap-3 bg-white rounded-lg border border-border p-4">
+          <span class="text-primary-600 font-bold">✓</span>
+          <span><strong>Sin coste para ti:</strong> nuestro servicio es gratuito. Los bancos nos retribuyen.</span>
+        </li>
+        <li class="flex items-start gap-3 bg-white rounded-lg border border-border p-4">
+          <span class="text-primary-600 font-bold">✓</span>
+          <span><strong>Sin compromiso:</strong> el estudio inicial es gratis y no genera ninguna obligación.</span>
+        </li>
+        <li class="flex items-start gap-3 bg-white rounded-lg border border-border p-4">
+          <span class="text-primary-600 font-bold">✓</span>
+          <span><strong>Acompañamiento hasta la firma:</strong> revisamos contrato, te avisamos de cláusulas a vigilar y vamos contigo a notaría.</span>
+        </li>
+        <li class="flex items-start gap-3 bg-white rounded-lg border border-border p-4">
+          <span class="text-primary-600 font-bold">✓</span>
+          <span><strong>Datos protegidos:</strong> tu información solo se comparte con las entidades necesarias para tu operación, conforme al RGPD.</span>
+        </li>
+      </ul>
+
+      <h2 class="mt-12">Inscritos en el registro oficial</h2>
+      <p class="mt-6 text-text-base leading-relaxed">
+        BHC | Broker Hipotecario Castellón está inscrito en el registro de intermediarios de crédito inmobiliario conforme a la
+        <strong>Ley 5/2019</strong>, de 15 de marzo, reguladora de los contratos de crédito inmobiliario. Esta inscripción es
+        obligatoria para poder operar como broker hipotecario en España y es tu garantía de que trabajamos bajo supervisión de la
+        autoridad competente.
+      </p>
+    </div>
+  </section>
+
+  <WhyBHC />
+  <CtaBand />
+</Layout>

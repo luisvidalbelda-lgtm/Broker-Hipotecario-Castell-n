@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import BreadcrumbNav from '../../components/BreadcrumbNav.astro';
+import HeroInterior from '../../components/HeroInterior.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import CtaBand from '../../components/CtaBand.astro';
+
+const allPosts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<Layout
+  title="Blog hipotecario | BHC Broker Hipotecario Castellón"
+  description="Artículos y guías sobre hipotecas, subrogación, financiación y mercado inmobiliario en Castellón. Información práctica para tomar mejores decisiones."
+>
+  <BreadcrumbNav items={[{ name: 'Blog' }]} />
+  <HeroInterior
+    title="Blog hipotecario"
+    subtitle="Artículos prácticos para entender mejor cómo funcionan las hipotecas, qué te conviene y cómo ahorrar."
+    ctaPrimaryHref="/contacto"
+  />
+
+  <section class="bg-bg-soft">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-16">
+      {allPosts.length === 0 ? (
+        <p class="text-center text-text-muted">Próximamente publicaremos los primeros artículos.</p>
+      ) : (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {allPosts.map((post) => <BlogCard post={post} />)}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <CtaBand />
+</Layout>

@@ -1,0 +1,31 @@
+# BHC CMS config (Sveltia / Decap compatible)
+# IMPORTANTE: actualizar 'repo' con el path real de GitHub antes del deploy.
+backend:
+  name: github
+  repo: USUARIO/bhc-castellon
+  branch: main
+
+publish_mode: simple
+media_folder: public/img/blog
+public_folder: /img/blog
+
+site_url: https://brokerhipotecariocastellon.es
+display_url: https://brokerhipotecariocastellon.es
+
+collections:
+  - name: blog
+    label: Blog
+    folder: src/content/blog
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    format: yaml-frontmatter
+    fields:
+      - { label: Título, name: title, widget: string }
+      - { label: Descripción meta (50-160 chars), name: description, widget: text }
+      - { label: Categoría, name: category, widget: select, options: ['hipoteca-general','subrogacion','primera-vivienda','segunda-vivienda','autonomos','no-residentes','jovenes','mercado-castellon'] }
+      - { label: Fecha publicación, name: pubDate, widget: datetime, format: 'YYYY-MM-DD', date_format: 'YYYY-MM-DD', time_format: false }
+      - { label: Fecha actualización, name: updatedDate, widget: datetime, format: 'YYYY-MM-DD', date_format: 'YYYY-MM-DD', time_format: false, required: false }
+      - { label: Imagen destacada, name: image, widget: image, required: false }
+      - { label: Borrador, name: draft, widget: boolean, default: false, required: false }
+      - { label: Contenido, name: body, widget: markdown }
