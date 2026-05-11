@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0a1929"/>
+      <stop offset="60%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#1e40af"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0a1929"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+  <!-- distant buildings -->
+  <g fill="#1e293b" opacity="0.7">
+    <rect x="80" y="620" width="120" height="280"/>
+    <rect x="220" y="580" width="100" height="320"/>
+    <rect x="340" y="650" width="140" height="250"/>
+    <rect x="500" y="540" width="110" height="360"/>
+    <rect x="630" y="600" width="130" height="300"/>
+    <rect x="780" y="560" width="100" height="340"/>
+    <rect x="900" y="620" width="160" height="280"/>
+    <rect x="1080" y="540" width="120" height="360"/>
+    <rect x="1220" y="600" width="140" height="300"/>
+    <rect x="1380" y="560" width="100" height="340"/>
+    <rect x="1500" y="640" width="130" height="260"/>
+    <rect x="1650" y="580" width="110" height="320"/>
+    <rect x="1780" y="620" width="130" height="280"/>
+  </g>
+  <!-- foreground buildings -->
+  <g fill="#0f172a">
+    <rect x="0" y="780" width="180" height="300"/>
+    <rect x="200" y="740" width="160" height="340"/>
+    <rect x="380" y="800" width="200" height="280"/>
+    <rect x="600" y="720" width="180" height="360"/>
+    <rect x="800" y="780" width="160" height="300"/>
+    <rect x="980" y="700" width="220" height="380"/>
+    <rect x="1220" y="760" width="180" height="320"/>
+    <rect x="1420" y="720" width="200" height="360"/>
+    <rect x="1640" y="780" width="180" height="300"/>
+    <rect x="1840" y="740" width="80" height="340"/>
+  </g>
+  <!-- lights -->
+  <g fill="#fbbf24" opacity="0.6">
+    <circle cx="280" cy="800" r="3"/>
+    <circle cx="320" cy="820" r="3"/>
+    <circle cx="650" cy="780" r="3"/>
+    <circle cx="690" cy="800" r="3"/>
+    <circle cx="1050" cy="760" r="3"/>
+    <circle cx="1090" cy="790" r="3"/>
+    <circle cx="1480" cy="780" r="3"/>
+    <circle cx="1520" cy="810" r="3"/>
+  </g>
+  <!-- ground -->
+  <rect y="1050" width="1920" height="30" fill="url(#ground)"/>
+</svg>

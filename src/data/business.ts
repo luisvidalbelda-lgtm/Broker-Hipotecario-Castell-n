@@ -33,6 +33,6 @@ export const business = {
     },
   ],
   registroLey5_2019: 'PENDIENTE — cliente proporcionará nº de inscripción',
-  ogImage: '/img/og-default.jpg',
+  ogImage: '/img/og-default.svg',
   social: {},
 } as const;
