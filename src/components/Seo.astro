@@ -1,0 +1,58 @@
+---
+// src/components/Seo.astro
+import { business } from '../data/business';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  noindex?: boolean;
+  jsonLd?: object | object[];
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage = business.ogImage,
+  ogType = 'website',
+  noindex = false,
+  jsonLd,
+} = Astro.props;
+
+const canonicalUrl = canonical
+  ? new URL(canonical, business.url).toString()
+  : new URL(Astro.url.pathname, business.url).toString();
+
+const ogImageUrl = new URL(ogImage, business.url).toString();
+const jsonLdArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<meta property="og:type" content={ogType} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:locale" content="es_ES" />
+<meta property="og:site_name" content={business.name} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />
+
+<meta name="theme-color" content="#2563eb" />
+<link rel="preload" href="/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/manrope-700.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="alternate" type="application/rss+xml" title="Blog BHC" href="/rss.xml" />
+
+{jsonLdArray.map((data) => (
+  <script type="application/ld+json" set:html={JSON.stringify(data)} />
+))}

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="ogBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1929"/>
+      <stop offset="100%" stop-color="#1e3a8a"/>
+    </linearGradient>
+    <linearGradient id="ogLogo" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#ogBg)"/>
+  <circle cx="950" cy="100" r="280" fill="#2563eb" opacity="0.12"/>
+  <circle cx="180" cy="540" r="220" fill="#1e40af" opacity="0.18"/>
+  <g transform="translate(80, 80)">
+    <rect width="120" height="120" rx="24" fill="url(#ogLogo)"/>
+    <text x="60" y="82" text-anchor="middle" font-family="system-ui, sans-serif" font-size="52" font-weight="800" fill="#fff" letter-spacing="-1">BHC</text>
+  </g>
+  <text x="80" y="360" font-family="system-ui, sans-serif" font-size="64" font-weight="800" fill="#fff" letter-spacing="-2">Broker Hipotecario</text>
+  <text x="80" y="438" font-family="system-ui, sans-serif" font-size="64" font-weight="800" fill="#93c5fd" letter-spacing="-2">en Castellón</text>
+  <text x="80" y="510" font-family="system-ui, sans-serif" font-size="28" font-weight="500" fill="#cbd5e1">No trabajamos para los bancos. Trabajamos para ti.</text>
+  <text x="80" y="555" font-family="system-ui, sans-serif" font-size="22" font-weight="500" fill="#94a3b8">Comparamos +30 bancos · Estudio gratuito · 0€</text>
+  <text x="1120" y="595" text-anchor="end" font-family="system-ui, sans-serif" font-size="18" font-weight="500" fill="#64748b">brokerhipotecariocastellon.es</text>
+</svg>

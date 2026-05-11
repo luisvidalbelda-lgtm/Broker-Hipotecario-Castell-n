@@ -1,0 +1,12 @@
+---
+// src/components/Logo.astro
+interface Props {
+  variant?: 'full' | 'mark';
+  class?: string;
+}
+const { variant = 'full', class: className = '' } = Astro.props;
+const src = variant === 'mark' ? '/img/logo-mark.svg' : '/img/logo.svg';
+---
+<a href="/" aria-label="Inicio · BHC Broker Hipotecario Castellón" class={`inline-flex items-center ${className}`}>
+  <img src={src} alt="BHC Broker Hipotecario Castellón" class="h-9 w-auto md:h-10" />
+</a>
