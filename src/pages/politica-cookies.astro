@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+const updated = new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<Layout
+  title="Política de cookies | BHC Broker Hipotecario Castellón"
+  description="Política de cookies de BHC."
+  noindex={true}
+>
+  <article class="max-w-3xl mx-auto px-4 md:px-6 py-16 prose prose-slate">
+    <h1>Política de cookies</h1>
+
+    <h2>¿Utilizamos cookies?</h2>
+    <p>
+      Este sitio web <strong>NO utiliza cookies de terceros</strong> ni cookies de seguimiento o publicitarias.
+      Tampoco usa herramientas de analítica que instalen cookies (no usamos Google Analytics, Facebook Pixel,
+      Hotjar ni similares).
+    </p>
+
+    <h2>Cookies técnicas</h2>
+    <p>
+      El sitio puede generar cookies estrictamente técnicas para el funcionamiento básico (por ejemplo, recordar
+      preferencias temporales de visualización). Estas cookies están exentas del deber de consentimiento conforme
+      al artículo 22.2 de la LSSI-CE.
+    </p>
+
+    <h2>Servicios de terceros</h2>
+    <p>
+      Si utiliza el botón de WhatsApp, será redirigido a la aplicación de WhatsApp (propiedad de Meta Platforms),
+      cuyo tratamiento de datos se rige por su propia política. Si pulsa "Abrir en Google Maps", será redirigido
+      a Google Maps con su política propia.
+    </p>
+
+    <p class="text-sm text-text-muted">Última actualización: {updated}.</p>
+  </article>
+</Layout>

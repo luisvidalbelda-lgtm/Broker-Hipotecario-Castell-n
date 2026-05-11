@@ -1,0 +1,16 @@
+---
+// src/components/WhatsAppFAB.astro
+import { business } from '../data/business';
+import { Icon } from 'astro-icon/components';
+const waUrl = `https://wa.me/${business.whatsapp}?text=${encodeURIComponent(business.whatsappMessage)}`;
+---
+
+<a
+  href={waUrl}
+  target="_blank"
+  rel="noopener"
+  aria-label="Contactar por WhatsApp"
+  class="fixed bottom-5 right-5 z-50 inline-flex items-center justify-center w-14 h-14 rounded-full bg-whatsapp text-white shadow-lg hover:bg-whatsapp-dk transition-colors"
+>
+  <Icon name="lucide:message-circle" class="w-7 h-7" />
+</a>

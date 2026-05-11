@@ -1,0 +1,69 @@
+---
+// src/components/Footer.astro
+import { business } from '../data/business';
+import { services } from '../data/services';
+import { locations } from '../data/locations';
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-bg-dark text-white mt-24">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+    <div>
+      <div class="text-2xl font-extrabold">BHC</div>
+      <div class="text-sm text-slate-300 mt-1">Broker Hipotecario Castellón</div>
+      <address class="not-italic mt-4 text-sm text-slate-300 leading-relaxed">
+        {business.address.street}<br />
+        {business.address.postalCode} {business.address.locality}<br />
+        {business.address.region}, {business.address.countryName}
+      </address>
+      <div class="mt-4 text-sm">
+        <a href={`tel:${business.phone}`} class="block text-slate-200 hover:text-white">Tel. {business.phoneDisplay}</a>
+        <a href={`mailto:${business.email}`} class="block text-slate-200 hover:text-white break-all">{business.email}</a>
+      </div>
+      <div class="mt-4 text-xs text-slate-400">
+        Lunes a Viernes · 09:00 - 19:00
+      </div>
+    </div>
+
+    <div>
+      <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400">Servicios</h3>
+      <ul class="mt-4 space-y-2 text-sm">
+        {services.map((s) => (
+          <li><a href={`/servicios/${s.slug}`} class="text-slate-300 hover:text-white">{s.shortTitle}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400">Dónde estamos</h3>
+      <ul class="mt-4 space-y-2 text-sm">
+        <li><a href="/" class="text-slate-300 hover:text-white font-semibold">Castellón de la Plana</a></li>
+        {locations.map((l) => (
+          <li><a href={`/broker-hipotecario/${l.slug}`} class="text-slate-300 hover:text-white">{l.name}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400">Legal</h3>
+      <ul class="mt-4 space-y-2 text-sm">
+        <li><a href="/aviso-legal" class="text-slate-300 hover:text-white">Aviso legal</a></li>
+        <li><a href="/politica-privacidad" class="text-slate-300 hover:text-white">Política de privacidad</a></li>
+        <li><a href="/politica-cookies" class="text-slate-300 hover:text-white">Política de cookies</a></li>
+        <li><a href="/sobre-bhc" class="text-slate-300 hover:text-white">Sobre BHC</a></li>
+        <li><a href="/contacto" class="text-slate-300 hover:text-white">Contacto</a></li>
+      </ul>
+      <p class="mt-6 text-xs text-slate-400 leading-relaxed">
+        Inscrito en el registro de intermediarios<br />de crédito inmobiliario<br />
+        nº {business.registroLey5_2019}
+      </p>
+    </div>
+  </div>
+
+  <div class="border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-6 text-xs text-slate-400 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p>© {year} {business.legalName}. Todos los derechos reservados.</p>
+      <p>{business.tagline}</p>
+    </div>
+  </div>
+</footer>

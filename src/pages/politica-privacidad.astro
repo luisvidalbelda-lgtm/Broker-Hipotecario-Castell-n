@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { business } from '../data/business';
+const updated = new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<Layout
+  title="Política de privacidad | BHC Broker Hipotecario Castellón"
+  description="Política de privacidad y protección de datos de BHC."
+  noindex={true}
+>
+  <article class="max-w-3xl mx-auto px-4 md:px-6 py-16 prose prose-slate">
+    <h1>Política de privacidad</h1>
+    <p>En cumplimiento del Reglamento (UE) 2016/679 de Protección de Datos Personales (RGPD) y la Ley Orgánica 3/2018 de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD), se informa:</p>
+
+    <h2>1. Responsable del tratamiento</h2>
+    <ul>
+      <li><strong>Responsable:</strong> {business.legalName}</li>
+      <li><strong>Domicilio:</strong> {business.address.street}, {business.address.postalCode} {business.address.locality}</li>
+      <li><strong>Email:</strong> {business.email}</li>
+    </ul>
+
+    <h2>2. Finalidad del tratamiento</h2>
+    <p>Los datos personales que nos proporcione a través del formulario de contacto o por otros medios (WhatsApp, teléfono, email) se tratarán para:</p>
+    <ul>
+      <li>Gestionar su solicitud de información o estudio hipotecario.</li>
+      <li>Prestar el servicio de intermediación crediticia.</li>
+      <li>Mantener comunicaciones relativas al servicio contratado o solicitado.</li>
+    </ul>
+
+    <h2>3. Legitimación</h2>
+    <p>La base legal para el tratamiento de sus datos es el consentimiento prestado al cumplimentar el formulario o iniciar el contacto, así como la ejecución de un contrato o medidas precontractuales.</p>
+
+    <h2>4. Conservación</h2>
+    <p>Sus datos se conservarán durante el tiempo necesario para la prestación del servicio y, posteriormente, durante los plazos legales aplicables (en particular, los previstos por la normativa financiera y fiscal).</p>
+
+    <h2>5. Destinatarios</h2>
+    <p>Para gestionar su solicitud, sus datos podrán ser comunicados a las entidades financieras con las que colaboramos, exclusivamente con la finalidad de obtener las mejores condiciones para usted. No se realizan transferencias internacionales de datos.</p>
+
+    <h2>6. Derechos</h2>
+    <p>Tiene derecho a acceder, rectificar, suprimir, oponerse, limitar el tratamiento y a la portabilidad de sus datos. Puede ejercer estos derechos enviando un email a <a href={`mailto:${business.email}`}>{business.email}</a> aportando copia de su DNI.</p>
+    <p>Asimismo, tiene derecho a presentar reclamación ante la Agencia Española de Protección de Datos (<a href="https://www.aepd.es" rel="external">aepd.es</a>).</p>
+
+    <h2>7. Tratamiento por procesadores</h2>
+    <p>Para el envío del formulario de contacto utilizamos el servicio <strong>Formspree</strong>, que actúa como encargado del tratamiento conforme a contrato. Los datos del formulario se transmiten a Formspree y se reenvían a nuestro email corporativo.</p>
+
+    <p class="text-sm text-text-muted">Última actualización: {updated}.</p>
+  </article>
+</Layout>

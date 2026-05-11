@@ -1,0 +1,135 @@
+---
+// src/components/Navigation.astro
+import Logo from './Logo.astro';
+import Button from './Button.astro';
+import { Icon } from 'astro-icon/components';
+import { business } from '../data/business';
+import { services } from '../data/services';
+import { locations } from '../data/locations';
+const waUrl = `https://wa.me/${business.whatsapp}?text=${encodeURIComponent(business.whatsappMessage)}`;
+---
+
+<header class="sticky top-0 z-40 bg-white/85 backdrop-blur-md border-b border-border">
+  <a href="#main" class="skip-to-content">Saltar al contenido</a>
+  <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 md:h-20">
+      <Logo />
+
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium" aria-label="Principal">
+        <a href="/" class="text-text-base hover:text-primary-600">Inicio</a>
+
+        <div class="relative group">
+          <button class="flex items-center gap-1 text-text-base hover:text-primary-600" aria-haspopup="true">
+            Servicios
+            <Icon name="lucide:chevron-down" class="w-4 h-4" />
+          </button>
+          <div class="absolute left-0 top-full pt-2 invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 transition-opacity">
+            <ul class="bg-white border border-border rounded-lg shadow-md py-2 min-w-[260px]">
+              {services.map((s) => (
+                <li>
+                  <a href={`/servicios/${s.slug}`} class="block px-4 py-2 hover:bg-bg-soft text-text-base">
+                    {s.shortTitle}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div class="relative group">
+          <button class="flex items-center gap-1 text-text-base hover:text-primary-600" aria-haspopup="true">
+            Dónde estamos
+            <Icon name="lucide:chevron-down" class="w-4 h-4" />
+          </button>
+          <div class="absolute left-0 top-full pt-2 invisible opacity-0 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 transition-opacity">
+            <ul class="bg-white border border-border rounded-lg shadow-md py-2 min-w-[220px]">
+              <li>
+                <a href="/" class="block px-4 py-2 hover:bg-bg-soft text-text-base font-semibold">
+                  Castellón de la Plana
+                </a>
+              </li>
+              {locations.map((l) => (
+                <li>
+                  <a href={`/broker-hipotecario/${l.slug}`} class="block px-4 py-2 hover:bg-bg-soft text-text-base">
+                    {l.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <a href="/sobre-bhc" class="text-text-base hover:text-primary-600">Sobre BHC</a>
+        <a href="/blog" class="text-text-base hover:text-primary-600">Blog</a>
+        <a href="/contacto" class="text-text-base hover:text-primary-600">Contacto</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <Button
+          variant="whatsapp"
+          href={waUrl}
+          rel="noopener"
+          target="_blank"
+          ariaLabel="Abrir conversación en WhatsApp"
+          class="!px-3 !py-2 !text-xs md:!text-sm md:!px-4 md:!py-2.5"
+        >
+          <Icon name="lucide:message-circle" class="w-4 h-4" />
+          <span class="hidden sm:inline">WhatsApp</span>
+        </Button>
+
+        <button
+          type="button"
+          class="lg:hidden p-2 -mr-2"
+          id="mobile-menu-toggle"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <Icon name="lucide:menu" class="w-6 h-6" />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="lg:hidden hidden border-t border-border bg-white">
+    <nav class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1" aria-label="Móvil">
+      <a href="/" class="px-3 py-2 rounded hover:bg-bg-soft">Inicio</a>
+      <details class="group">
+        <summary class="flex items-center justify-between px-3 py-2 rounded hover:bg-bg-soft cursor-pointer list-none">
+          Servicios
+          <Icon name="lucide:chevron-down" class="w-4 h-4 group-open:rotate-180 transition-transform" />
+        </summary>
+        <ul class="pl-3">
+          {services.map((s) => (
+            <li><a href={`/servicios/${s.slug}`} class="block px-3 py-2 text-sm rounded hover:bg-bg-soft">{s.shortTitle}</a></li>
+          ))}
+        </ul>
+      </details>
+      <details class="group">
+        <summary class="flex items-center justify-between px-3 py-2 rounded hover:bg-bg-soft cursor-pointer list-none">
+          Dónde estamos
+          <Icon name="lucide:chevron-down" class="w-4 h-4 group-open:rotate-180 transition-transform" />
+        </summary>
+        <ul class="pl-3">
+          <li><a href="/" class="block px-3 py-2 text-sm rounded hover:bg-bg-soft font-semibold">Castellón de la Plana</a></li>
+          {locations.map((l) => (
+            <li><a href={`/broker-hipotecario/${l.slug}`} class="block px-3 py-2 text-sm rounded hover:bg-bg-soft">{l.name}</a></li>
+          ))}
+        </ul>
+      </details>
+      <a href="/sobre-bhc" class="px-3 py-2 rounded hover:bg-bg-soft">Sobre BHC</a>
+      <a href="/blog" class="px-3 py-2 rounded hover:bg-bg-soft">Blog</a>
+      <a href="/contacto" class="px-3 py-2 rounded hover:bg-bg-soft">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<script is:inline>
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  toggle?.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    menu?.classList.toggle('hidden');
+  });
+</script>

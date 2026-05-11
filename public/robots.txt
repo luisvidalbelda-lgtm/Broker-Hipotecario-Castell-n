@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /aviso-legal
+Disallow: /politica-privacidad
+Disallow: /politica-cookies
+
+Sitemap: https://brokerhipotecariocastellon.es/sitemap-index.xml

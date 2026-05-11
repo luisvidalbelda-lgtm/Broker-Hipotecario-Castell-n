@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { business } from '../data/business';
+const updated = new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<Layout
+  title="Aviso legal | BHC Broker Hipotecario Castellón"
+  description="Aviso legal de BHC Broker Hipotecario Castellón."
+  noindex={true}
+>
+  <article class="max-w-3xl mx-auto px-4 md:px-6 py-16 prose prose-slate">
+    <h1>Aviso legal</h1>
+    <p>
+      En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la
+      Información y Comercio Electrónico (LSSI-CE), se informa de los siguientes datos:
+    </p>
+
+    <h2>1. Titular del sitio web</h2>
+    <ul>
+      <li><strong>Denominación:</strong> {business.legalName}</li>
+      <li><strong>Domicilio:</strong> {business.address.street}, {business.address.postalCode} {business.address.locality}, {business.address.region}, España</li>
+      <li><strong>Teléfono:</strong> {business.phoneDisplay}</li>
+      <li><strong>Email:</strong> {business.email}</li>
+      <li><strong>Registro:</strong> Inscrito en el registro de intermediarios de crédito inmobiliario nº {business.registroLey5_2019}, conforme a la Ley 5/2019, de 15 de marzo, reguladora de los contratos de crédito inmobiliario.</li>
+    </ul>
+
+    <h2>2. Objeto</h2>
+    <p>El presente Aviso Legal regula el uso del sitio web {business.url}, propiedad de {business.legalName}.</p>
+    <p>La navegación por este sitio atribuye la condición de usuario e implica la aceptación plena y sin reservas de todas y cada una de las disposiciones incluidas en este Aviso Legal.</p>
+
+    <h2>3. Servicios</h2>
+    <p>{business.legalName} actúa como intermediario de crédito inmobiliario, prestando servicios de asesoramiento y mediación con entidades financieras conforme a la normativa aplicable.</p>
+
+    <h2>4. Propiedad intelectual e industrial</h2>
+    <p>Todos los contenidos del sitio web (textos, imágenes, logotipos, gráficos, código fuente) son propiedad de {business.legalName} o de terceros que han autorizado su uso, y están protegidos por la legislación sobre propiedad intelectual e industrial. Queda prohibida la reproducción, distribución, comunicación pública o transformación de los mismos sin autorización expresa.</p>
+
+    <h2>5. Exención de responsabilidad</h2>
+    <p>{business.legalName} no se hace responsable de los daños y perjuicios que pudieran derivarse del uso de la información contenida en este sitio web o de la interrupción de su funcionamiento. La información sobre condiciones financieras tiene carácter orientativo y queda sujeta a las condiciones particulares que cada entidad financiera pueda aplicar tras el análisis individual de cada solicitud.</p>
+
+    <h2>6. Legislación aplicable</h2>
+    <p>El presente Aviso Legal se rige por la legislación española. Para la resolución de cualquier controversia las partes se someten a los Juzgados y Tribunales de Castellón de la Plana.</p>
+
+    <p class="text-sm text-text-muted">Última actualización: {updated}.</p>
+  </article>
+</Layout>

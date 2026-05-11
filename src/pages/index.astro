@@ -1,20 +1,17 @@
 ---
-import '../styles/global.css';
+import Layout from '../layouts/Layout.astro';
+import { business } from '../data/business';
 ---
-<!DOCTYPE html>
-<html lang="es-ES">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BHC | Broker Hipotecario Castellón</title>
-  </head>
-  <body>
-    <main class="min-h-screen flex items-center justify-center bg-bg-soft">
-      <div class="text-center px-4">
-        <div class="inline-block bg-primary-600 text-white text-2xl font-extrabold w-16 h-16 leading-[4rem] rounded-xl">BHC</div>
-        <h1 class="mt-6 text-text-base">Bootstrap correcto</h1>
-        <p class="mt-2 text-text-muted">Manrope · Tailwind 4 · Tokens cargados</p>
-      </div>
-    </main>
-  </body>
-</html>
+
+<Layout
+  title="Broker hipotecario Castellón | BHC — Comparamos +30 bancos por ti"
+  description={business.description}
+>
+  <section class="bg-bg-soft">
+    <div class="max-w-3xl mx-auto px-4 py-24 text-center">
+      <div class="inline-block bg-primary-600 text-white text-2xl font-extrabold w-16 h-16 leading-[4rem] rounded-xl">BHC</div>
+      <h1 class="mt-6">Phase 1 OK</h1>
+      <p class="mt-3 text-text-muted">Layout + Navigation + Footer + Schema cargados. Próximo: Phase 2 (Hero, servicios, FAQ, home completa).</p>
+    </div>
+  </section>
+</Layout>
