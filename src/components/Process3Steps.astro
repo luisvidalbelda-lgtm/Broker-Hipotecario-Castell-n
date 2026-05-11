@@ -1,0 +1,28 @@
+---
+// src/components/Process3Steps.astro
+const steps = [
+  { n: 1, title: 'Cuéntanos tu caso', text: 'Conversación de 10 minutos por teléfono o WhatsApp. Sin compromiso.' },
+  { n: 2, title: 'Negociamos con +30 bancos', text: 'Presentamos tu caso solo a los bancos que mejor encajan con tu perfil.' },
+  { n: 3, title: 'Eliges y firmas', text: 'Te traemos 2-3 ofertas reales comparadas. Tú decides. Acompañamos hasta la notaría.' },
+];
+---
+
+<section class="bg-bg-soft">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-16 md:py-24">
+    <div class="text-center max-w-3xl mx-auto">
+      <h2>Tu hipoteca lista en 3 pasos</h2>
+      <p class="mt-4 text-lg text-text-muted">Sin pisar un banco. Sin esperas innecesarias.</p>
+    </div>
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+      {steps.map((s) => (
+        <div class="bg-white border border-border rounded-xl p-8">
+          <div class="inline-flex w-12 h-12 rounded-full bg-primary-600 text-white items-center justify-center font-bold text-lg mb-4">
+            {s.n}
+          </div>
+          <h3 class="text-xl font-bold">{s.title}</h3>
+          <p class="mt-2 text-text-muted">{s.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

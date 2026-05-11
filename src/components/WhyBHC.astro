@@ -1,0 +1,31 @@
+---
+// src/components/WhyBHC.astro
+import { Icon } from 'astro-icon/components';
+
+const reasons = [
+  { icon: 'lucide:user-check', title: 'Independencia', text: 'No trabajamos para ningún banco en exclusiva. Trabajamos para ti.' },
+  { icon: 'lucide:euro', title: 'Ahorro real', text: 'Comparamos +30 entidades para conseguir el menor coste total (TAE).' },
+  { icon: 'lucide:shield-check', title: 'Transparencia', text: 'Ves todas las ofertas comparadas. Tú decides con información completa.' },
+  { icon: 'lucide:map-pin', title: 'Cercanía local', text: 'Oficina en Castellón centro (C. Egual 34) o por WhatsApp y email.' },
+];
+---
+
+<section class="bg-white">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-16 md:py-24">
+    <div class="text-center max-w-3xl mx-auto">
+      <h2>¿Por qué BHC?</h2>
+      <p class="mt-4 text-lg text-text-muted">Cuatro razones por las que nuestros clientes nos eligen frente a ir directos al banco.</p>
+    </div>
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {reasons.map((r) => (
+        <div class="text-center">
+          <div class="inline-flex w-14 h-14 rounded-full bg-primary-50 text-primary-600 items-center justify-center mb-4">
+            <Icon name={r.icon} class="w-7 h-7" />
+          </div>
+          <h3 class="text-lg font-bold">{r.title}</h3>
+          <p class="mt-2 text-sm text-text-muted">{r.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

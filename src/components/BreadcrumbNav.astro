@@ -1,0 +1,44 @@
+---
+// src/components/BreadcrumbNav.astro
+import { business } from '../data/business';
+import { Icon } from 'astro-icon/components';
+
+interface Crumb {
+  name: string;
+  href?: string;
+}
+interface Props {
+  items: Crumb[];
+}
+
+const { items } = Astro.props;
+const fullItems = [{ name: 'Inicio', href: '/' }, ...items];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: fullItems.map((item, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: item.name,
+    item: item.href ? new URL(item.href, business.url).toString() : undefined,
+  })),
+};
+---
+
+<nav aria-label="Breadcrumb" class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-4 text-sm">
+  <ol class="flex flex-wrap items-center gap-2 text-text-muted">
+    {fullItems.map((item, i) => (
+      <li class="flex items-center gap-2">
+        {i > 0 && <Icon name="lucide:chevron-right" class="w-4 h-4 text-text-soft" />}
+        {item.href && i < fullItems.length - 1 ? (
+          <a href={item.href} class="hover:text-primary-600">{item.name}</a>
+        ) : (
+          <span class="text-text-base font-medium">{item.name}</span>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

@@ -1,0 +1,32 @@
+---
+// src/components/LocationsGrid.astro
+import LocationCard from './LocationCard.astro';
+import { locations } from '../data/locations';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  excludeSlug?: string;
+}
+const {
+  title = 'También te ayudamos en',
+  subtitle = 'Trabajamos en Castellón ciudad y en el cinturón cercano. Si vives en alguna de estas localidades, no hace falta que vengas — gestionamos por WhatsApp, email y teléfono.',
+  excludeSlug,
+} = Astro.props;
+
+const list = excludeSlug ? locations.filter((l) => l.slug !== excludeSlug) : locations;
+---
+
+<section class="bg-white">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-16 md:py-24">
+    {title && (
+      <div class="text-center max-w-3xl mx-auto">
+        <h2>{title}</h2>
+        {subtitle && <p class="mt-4 text-lg text-text-muted">{subtitle}</p>}
+      </div>
+    )}
+    <div class={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 ${title ? 'mt-12' : ''}`}>
+      {list.map((l) => <LocationCard location={l} />)}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,106 @@
+---
+// src/components/ContactForm.astro
+// IMPORTANT: replace FORMSPREE_ID with the real ID after creating form at formspree.io
+// pointing to info@brokerhipotecariocastellon.es
+const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
+
+interface Props {
+  variant?: 'hero' | 'inline';
+  title?: string;
+  subtitle?: string;
+}
+const { variant = 'hero', title, subtitle } = Astro.props;
+const isHero = variant === 'hero';
+---
+
+<form
+  action={`https://formspree.io/f/${FORMSPREE_ID}`}
+  method="POST"
+  class={`w-full ${isHero ? 'bg-white text-text-base rounded-2xl p-6 md:p-8 shadow-card' : 'bg-bg-soft rounded-xl p-6 md:p-8'}`}
+>
+  {title && <h3 class="text-lg font-bold mb-1">{title}</h3>}
+  {subtitle && <p class="text-sm text-text-muted mb-5">{subtitle}</p>}
+
+  <div class="space-y-3">
+    <label class="block">
+      <span class="text-sm font-medium text-text-base">Nombre y apellidos *</span>
+      <input
+        type="text"
+        name="nombre"
+        required
+        autocomplete="name"
+        class="mt-1 block w-full rounded-md border border-border px-3 py-2.5 text-text-base focus:border-primary-600 focus:outline-none"
+      />
+    </label>
+
+    <label class="block">
+      <span class="text-sm font-medium text-text-base">Teléfono *</span>
+      <input
+        type="tel"
+        name="telefono"
+        required
+        autocomplete="tel"
+        class="mt-1 block w-full rounded-md border border-border px-3 py-2.5 text-text-base focus:border-primary-600 focus:outline-none"
+      />
+    </label>
+
+    <label class="block">
+      <span class="text-sm font-medium text-text-base">Email</span>
+      <input
+        type="email"
+        name="email"
+        autocomplete="email"
+        class="mt-1 block w-full rounded-md border border-border px-3 py-2.5 text-text-base focus:border-primary-600 focus:outline-none"
+      />
+    </label>
+
+    <label class="block">
+      <span class="text-sm font-medium text-text-base">Tipo de operación</span>
+      <select
+        name="tipo_operacion"
+        class="mt-1 block w-full rounded-md border border-border px-3 py-2.5 text-text-base bg-white focus:border-primary-600 focus:outline-none"
+      >
+        <option value="">Selecciona…</option>
+        <option value="primera_vivienda">Primera vivienda</option>
+        <option value="segunda_vivienda">Segunda vivienda</option>
+        <option value="subrogacion">Mejorar mi hipoteca actual</option>
+        <option value="maxima_financiacion">Necesito máxima financiación</option>
+        <option value="no_residente">Soy no residente</option>
+        <option value="autonomo">Soy autónomo</option>
+        <option value="joven">Hipoteca joven / aval ICO</option>
+        <option value="otra">Otra</option>
+      </select>
+    </label>
+
+    <label class="block">
+      <span class="text-sm font-medium text-text-base">Mensaje (opcional)</span>
+      <textarea
+        name="mensaje"
+        rows="3"
+        class="mt-1 block w-full rounded-md border border-border px-3 py-2.5 text-text-base focus:border-primary-600 focus:outline-none"
+      ></textarea>
+    </label>
+
+    <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" />
+    <input type="hidden" name="_subject" value="Nuevo lead web BHC" />
+    <input type="hidden" name="origen" value={Astro.url.pathname} />
+
+    <label class="flex items-start gap-2 text-xs text-text-muted">
+      <input type="checkbox" name="privacidad" required class="mt-1" />
+      <span>
+        He leído y acepto la <a href="/politica-privacidad" class="text-primary-600 underline">política de privacidad</a>. *
+      </span>
+    </label>
+
+    <button
+      type="submit"
+      class="w-full inline-flex items-center justify-center gap-2 bg-primary-600 text-white font-semibold rounded-md px-5 py-3 hover:bg-primary-700 transition-colors"
+    >
+      Solicitar estudio gratuito →
+    </button>
+
+    <p class="text-xs text-text-soft text-center">
+      Respuesta en menos de 24h · Sin compromiso · 0 €
+    </p>
+  </div>
+</form>

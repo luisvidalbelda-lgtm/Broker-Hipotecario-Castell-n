@@ -1,0 +1,33 @@
+---
+// src/components/LocationCard.astro
+import { Icon } from 'astro-icon/components';
+import type { Location } from '../data/locations';
+
+interface Props {
+  location: Location;
+}
+const { location } = Astro.props;
+---
+
+<a
+  href={`/broker-hipotecario/${location.slug}`}
+  class="group block bg-white border border-border rounded-xl p-6 hover:border-primary-600 hover:shadow-card transition-all"
+>
+  <div class="flex items-start justify-between gap-2">
+    <div class="flex items-center gap-2 text-primary-600">
+      <Icon name="lucide:map-pin" class="w-5 h-5" />
+      <span class="text-xs font-bold uppercase tracking-wider">{location.comarca}</span>
+    </div>
+    <span class="text-xs text-text-soft">{location.distanceFromOfficeKm} km</span>
+  </div>
+  <h3 class="mt-3 text-xl font-bold text-text-base group-hover:text-primary-700">
+    {location.name}
+  </h3>
+  <p class="mt-2 text-sm text-text-muted">
+    {location.population.toLocaleString('es-ES')} habitantes · {location.marketDataM2.toLocaleString('es-ES')} €/m²
+  </p>
+  <div class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary-600 group-hover:gap-2 transition-all">
+    Broker hipotecario en {location.name}
+    <Icon name="lucide:arrow-right" class="w-4 h-4" />
+  </div>
+</a>

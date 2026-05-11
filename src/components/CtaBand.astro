@@ -1,0 +1,37 @@
+---
+// src/components/CtaBand.astro
+import Button from './Button.astro';
+import { Icon } from 'astro-icon/components';
+import { business } from '../data/business';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+const {
+  title = '¿Quieres ahorrar en tu hipoteca?',
+  subtitle = 'Estudio gratuito y sin compromiso. Te contestamos en menos de 24 horas.',
+} = Astro.props;
+
+const waUrl = `https://wa.me/${business.whatsapp}?text=${encodeURIComponent(business.whatsappMessage)}`;
+---
+
+<section class="bg-gradient-to-br from-primary-700 to-primary-900 text-white">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-16 md:py-24 text-center">
+    <h2 class="text-white max-w-3xl mx-auto">{title}</h2>
+    <p class="mt-4 text-lg text-blue-100 max-w-2xl mx-auto">{subtitle}</p>
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+      <Button href="/contacto" variant="secondary" class="!bg-white !text-primary-700 hover:!bg-blue-50">
+        Solicitar estudio gratuito
+      </Button>
+      <Button href={waUrl} variant="whatsapp" rel="noopener" target="_blank" ariaLabel="WhatsApp">
+        <Icon name="lucide:message-circle" class="w-4 h-4" />
+        WhatsApp
+      </Button>
+      <Button href={`tel:${business.phone}`} variant="ghost" class="!text-white hover:!bg-white/10">
+        <Icon name="lucide:phone" class="w-4 h-4" />
+        {business.phoneDisplay}
+      </Button>
+    </div>
+  </div>
+</section>

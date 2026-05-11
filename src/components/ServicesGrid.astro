@@ -1,0 +1,37 @@
+---
+// src/components/ServicesGrid.astro
+import ServiceCard from './ServiceCard.astro';
+import { services } from '../data/services';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  excludeSlug?: string;
+  limit?: number;
+  bg?: 'soft' | 'white';
+}
+const {
+  title = 'Nuestros servicios',
+  subtitle = 'Cubrimos cualquier situación hipotecaria. Comparamos +30 bancos para encontrar tu mejor opción.',
+  excludeSlug,
+  limit,
+  bg = 'soft',
+} = Astro.props;
+
+let list = excludeSlug ? services.filter((s) => s.slug !== excludeSlug) : services;
+if (limit) list = list.slice(0, limit);
+---
+
+<section class={bg === 'soft' ? 'bg-bg-soft' : 'bg-white'}>
+  <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-16 md:py-24">
+    {title && (
+      <div class="text-center max-w-3xl mx-auto">
+        <h2>{title}</h2>
+        {subtitle && <p class="mt-4 text-lg text-text-muted">{subtitle}</p>}
+      </div>
+    )}
+    <div class={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 ${title ? 'mt-12' : ''}`}>
+      {list.map((s) => <ServiceCard service={s} />)}
+    </div>
+  </div>
+</section>

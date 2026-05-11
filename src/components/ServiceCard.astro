@@ -1,0 +1,27 @@
+---
+// src/components/ServiceCard.astro
+import { Icon } from 'astro-icon/components';
+import type { Service } from '../data/services';
+
+interface Props {
+  service: Service;
+}
+const { service } = Astro.props;
+---
+
+<a
+  href={`/servicios/${service.slug}`}
+  class="group relative block bg-white border border-border rounded-xl p-6 hover:border-primary-600 hover:shadow-card transition-all"
+>
+  <div class="w-12 h-12 rounded-lg bg-primary-50 text-primary-600 flex items-center justify-center mb-4 group-hover:bg-primary-600 group-hover:text-white transition-colors">
+    <Icon name={service.icon} class="w-6 h-6" />
+  </div>
+  <h3 class="text-lg font-bold text-text-base group-hover:text-primary-700 transition-colors">
+    {service.shortTitle}
+  </h3>
+  <p class="mt-2 text-sm text-text-muted line-clamp-3">{service.intro}</p>
+  <div class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary-600 group-hover:gap-2 transition-all">
+    Saber más
+    <Icon name="lucide:arrow-right" class="w-4 h-4" />
+  </div>
+</a>
