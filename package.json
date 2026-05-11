@@ -1,0 +1,27 @@
+{
+  "name": "bhc-castellon",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "BHC | Broker Hipotecario Castellón — sitio web estático Astro 5",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.9",
+    "@astrojs/mdx": "^5.0.4",
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/sitemap": "^3.7.2",
+    "@iconify-json/lucide": "^1.2.106",
+    "astro": "^6.3.1",
+    "astro-icon": "^1.1.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.0",
+    "tailwindcss": "^4.3.0"
+  }
+}
