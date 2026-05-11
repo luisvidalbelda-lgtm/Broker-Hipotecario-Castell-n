@@ -1,0 +1,124 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroInterior from '../../components/HeroInterior.astro';
+import BreadcrumbNav from '../../components/BreadcrumbNav.astro';
+import FAQAccordion from '../../components/FAQAccordion.astro';
+import RelatedItems from '../../components/RelatedItems.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import { Icon } from 'astro-icon/components';
+import { services } from '../../data/services';
+import { business } from '../../data/business';
+
+export async function getStaticPaths() {
+  return services.map((s) => ({ params: { slug: s.slug }, props: { service: s } }));
+}
+
+const { service } = Astro.props;
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: service.title,
+  serviceType: service.shortTitle,
+  provider: { '@id': `${business.url}/#localbusiness` },
+  areaServed: [
+    { '@type': 'City', name: 'Castellón de la Plana' },
+    { '@type': 'City', name: 'Vila-real' },
+    { '@type': 'City', name: 'Almassora' },
+    { '@type': 'City', name: 'Benicàssim' },
+    { '@type': 'City', name: 'Borriol' },
+  ],
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'EUR',
+    description: 'Estudio gratuito sin compromiso',
+  },
+};
+---
+
+<Layout
+  title={service.metaTitle}
+  description={service.metaDescription}
+  jsonLd={serviceSchema}
+>
+  <BreadcrumbNav items={[
+    { name: 'Servicios', href: '/servicios' },
+    { name: service.shortTitle },
+  ]} />
+
+  <HeroInterior title={service.title} subtitle={service.intro} />
+
+  <section class="bg-white">
+    <div class="max-w-3xl mx-auto px-4 md:px-6 py-16">
+      <h2>¿Qué es {service.shortTitle.toLowerCase()}?</h2>
+      <div class="mt-6 space-y-4 text-text-base leading-relaxed">
+        {service.what.map((p) => <p>{p}</p>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-bg-soft">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-16 md:py-20">
+      <h2 class="text-center max-w-3xl mx-auto">Cómo te ayudamos</h2>
+      <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-5">
+        {service.howWeHelp.map((item) => (
+          <div class="bg-white border border-border rounded-xl p-6 flex gap-4">
+            <div class="shrink-0 w-12 h-12 rounded-lg bg-primary-50 text-primary-600 flex items-center justify-center">
+              <Icon name={item.icon} class="w-6 h-6" />
+            </div>
+            <p class="text-text-base font-medium leading-relaxed">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white">
+    <div class="max-w-5xl mx-auto px-4 md:px-6 py-16 md:py-20">
+      <h2 class="text-center">Cómo funciona el proceso</h2>
+      <ol class="mt-12 space-y-6">
+        {service.process.map((step) => (
+          <li class="flex gap-5">
+            <div class="shrink-0 w-12 h-12 rounded-full bg-primary-600 text-white flex items-center justify-center font-bold">
+              {step.step}
+            </div>
+            <div>
+              <h3 class="text-lg font-bold">{step.title}</h3>
+              <p class="mt-1 text-text-muted">{step.description}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="bg-bg-soft">
+    <div class="max-w-5xl mx-auto px-4 md:px-6 py-16 md:py-20">
+      <h2 class="text-center">¿Para quién es este servicio?</h2>
+      <ul class="mt-10 max-w-2xl mx-auto space-y-3">
+        {service.forWho.map((item) => (
+          <li class="flex items-start gap-3 bg-white rounded-lg border border-border p-4">
+            <Icon name="lucide:check-circle-2" class="w-5 h-5 text-success shrink-0 mt-0.5" />
+            <span class="text-text-base">{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <div id="estudio-gratuito" class="bg-white">
+    <div class="max-w-3xl mx-auto px-4 md:px-6 py-16 md:py-20">
+      <h2 class="text-center">¿Empezamos con tu caso?</h2>
+      <p class="text-center text-text-muted mt-3">Completa el formulario y te contestamos en menos de 24h. Sin compromiso.</p>
+      <div class="mt-8">
+        <ContactForm variant="inline" />
+      </div>
+    </div>
+  </div>
+
+  <FAQAccordion items={service.faq} title={`Preguntas frecuentes sobre ${service.shortTitle.toLowerCase()}`} />
+  <RelatedItems excludeSlug={service.slug} />
+  <CtaBand />
+</Layout>

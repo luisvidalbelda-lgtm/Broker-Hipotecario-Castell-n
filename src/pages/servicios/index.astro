@@ -1,0 +1,21 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BreadcrumbNav from '../../components/BreadcrumbNav.astro';
+import HeroInterior from '../../components/HeroInterior.astro';
+import ServicesGrid from '../../components/ServicesGrid.astro';
+import CtaBand from '../../components/CtaBand.astro';
+---
+
+<Layout
+  title="Servicios | BHC Broker Hipotecario Castellón"
+  description="Todos los servicios hipotecarios que ofrecemos en Castellón: primera vivienda, segunda, subrogación, máxima financiación, no residentes, autónomos y joven."
+>
+  <BreadcrumbNav items={[{ name: 'Servicios' }]} />
+  <HeroInterior
+    title="Nuestros servicios"
+    subtitle="Cubrimos cualquier situación hipotecaria. Comparamos más de 30 bancos para encontrar la mejor opción para tu caso concreto."
+    ctaPrimaryHref="/contacto"
+  />
+  <ServicesGrid title={undefined} subtitle={undefined} bg="white" />
+  <CtaBand />
+</Layout>

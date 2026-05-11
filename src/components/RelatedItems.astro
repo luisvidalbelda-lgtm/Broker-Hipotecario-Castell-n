@@ -1,0 +1,27 @@
+---
+// src/components/RelatedItems.astro
+import ServiceCard from './ServiceCard.astro';
+import { services } from '../data/services';
+
+interface Props {
+  excludeSlug: string;
+  limit?: number;
+  title?: string;
+}
+const {
+  excludeSlug,
+  limit = 3,
+  title = 'Otros servicios relacionados',
+} = Astro.props;
+
+const list = services.filter((s) => s.slug !== excludeSlug).slice(0, limit);
+---
+
+<section class="bg-bg-soft">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-16">
+    <h2 class="text-center">{title}</h2>
+    <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-5">
+      {list.map((s) => <ServiceCard service={s} />)}
+    </div>
+  </div>
+</section>
