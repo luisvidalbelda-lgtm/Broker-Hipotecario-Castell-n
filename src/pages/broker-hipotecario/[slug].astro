@@ -1,0 +1,111 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import HeroInterior from '../../components/HeroInterior.astro';
+import BreadcrumbNav from '../../components/BreadcrumbNav.astro';
+import FAQAccordion from '../../components/FAQAccordion.astro';
+import ServicesGrid from '../../components/ServicesGrid.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import { Icon } from 'astro-icon/components';
+import { locations } from '../../data/locations';
+import { business } from '../../data/business';
+
+export async function getStaticPaths() {
+  return locations.map((l) => ({ params: { slug: l.slug }, props: { location: l } }));
+}
+
+const { location } = Astro.props;
+const officeAddress = `${business.address.street}, ${business.address.postalCode} ${business.address.locality}`;
+const mapsDirectionsUrl = `https://www.google.com/maps/dir/${encodeURIComponent(location.name + ', ' + location.postalCode)}/${encodeURIComponent(officeAddress)}`;
+---
+
+<Layout
+  title={location.metaTitle}
+  description={location.metaDescription}
+>
+  <BreadcrumbNav items={[
+    { name: 'Dónde estamos', href: '/broker-hipotecario' },
+    { name: location.name },
+  ]} />
+
+  <HeroInterior
+    eyebrow={`${location.comarca.toUpperCase()} · ${location.distanceFromOfficeKm} KM DE NUESTRA OFICINA`}
+    title={`Broker hipotecario en ${location.name}`}
+    subtitle={location.description}
+  />
+
+  <section class="bg-white">
+    <div class="max-w-5xl mx-auto px-4 md:px-6 py-12">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="text-center p-4 bg-bg-soft rounded-lg">
+          <div class="text-xs uppercase tracking-wide text-text-soft">Habitantes</div>
+          <div class="text-2xl font-bold text-text-base mt-1">{location.population.toLocaleString('es-ES')}</div>
+        </div>
+        <div class="text-center p-4 bg-bg-soft rounded-lg">
+          <div class="text-xs uppercase tracking-wide text-text-soft">Precio medio €/m²</div>
+          <div class="text-2xl font-bold text-text-base mt-1">{location.marketDataM2.toLocaleString('es-ES')}</div>
+        </div>
+        <div class="text-center p-4 bg-bg-soft rounded-lg">
+          <div class="text-xs uppercase tracking-wide text-text-soft">Variación 12m</div>
+          <div class="text-2xl font-bold text-success mt-1">+{location.marketDataYoY}%</div>
+        </div>
+        <div class="text-center p-4 bg-bg-soft rounded-lg">
+          <div class="text-xs uppercase tracking-wide text-text-soft">Distancia oficina</div>
+          <div class="text-2xl font-bold text-text-base mt-1">{location.distanceFromOfficeKm} km</div>
+        </div>
+      </div>
+      <p class="text-xs text-text-soft mt-3 text-center">Fuente: {location.marketSource}.</p>
+    </div>
+  </section>
+
+  <section class="bg-white">
+    <div class="max-w-3xl mx-auto px-4 md:px-6 py-16">
+      <h2>Tu broker hipotecario en {location.name}</h2>
+      <p class="mt-6 text-text-base leading-relaxed">{location.uniqueText}</p>
+      <h3 class="mt-10">Zonas y referencias de {location.name} que conocemos</h3>
+      <ul class="mt-4 space-y-2 text-text-base">
+        {location.references.map((r) => (
+          <li class="flex items-start gap-2">
+            <Icon name="lucide:check-circle-2" class="w-5 h-5 text-success shrink-0 mt-1" />
+            <span>{r}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <ServicesGrid
+    title={`Servicios disponibles para ${location.name}`}
+    subtitle="Todos nuestros servicios cubren completamente tu zona. Sin distinción por localidad."
+  />
+
+  <section class="bg-bg-soft">
+    <div class="max-w-5xl mx-auto px-4 md:px-6 py-16">
+      <h2 class="text-center">Cómo llegar a nuestra oficina</h2>
+      <p class="text-center text-text-muted mt-3 max-w-2xl mx-auto">
+        Estamos en {officeAddress}, a solo {location.distanceFromOfficeKm} km desde {location.name}.
+        Aunque también gestionamos todo por WhatsApp y email — solo necesitas venir a firmar.
+      </p>
+      <div class="mt-8 flex justify-center">
+        <a href={mapsDirectionsUrl} target="_blank" rel="noopener"
+          class="inline-flex items-center gap-2 bg-primary-600 text-white font-semibold rounded-md px-6 py-3 hover:bg-primary-700">
+          <Icon name="lucide:map" class="w-5 h-5" />
+          Cómo llegar desde {location.name}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div id="estudio-gratuito" class="bg-white">
+    <div class="max-w-3xl mx-auto px-4 md:px-6 py-16">
+      <h2 class="text-center">Pide tu estudio gratuito</h2>
+      <p class="text-center text-text-muted mt-3">Vivas donde vivas en el cinturón de Castellón, gestionamos sin que tengas que desplazarte.</p>
+      <div class="mt-8">
+        <ContactForm variant="inline" />
+      </div>
+    </div>
+  </div>
+
+  <FAQAccordion items={location.faq} title={`Preguntas frecuentes — ${location.name}`} />
+  <CtaBand />
+</Layout>

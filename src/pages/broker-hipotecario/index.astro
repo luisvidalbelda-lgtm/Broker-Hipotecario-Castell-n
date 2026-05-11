@@ -1,0 +1,21 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BreadcrumbNav from '../../components/BreadcrumbNav.astro';
+import HeroInterior from '../../components/HeroInterior.astro';
+import LocationsGrid from '../../components/LocationsGrid.astro';
+import CtaBand from '../../components/CtaBand.astro';
+---
+
+<Layout
+  title="Dónde estamos | BHC Broker Hipotecario en Castellón y cinturón"
+  description="BHC trabaja en Castellón de la Plana y cinturón cercano: Vila-real, Almassora, Benicàssim, Borriol. Estudio gratuito de hipoteca sin desplazarte."
+>
+  <BreadcrumbNav items={[{ name: 'Dónde estamos' }]} />
+  <HeroInterior
+    title="Dónde trabajamos"
+    subtitle="Castellón de la Plana ciudad y cinturón cercano. Gestionamos por WhatsApp, email y teléfono — solo necesitas venir a firmar."
+    ctaPrimaryHref="/contacto"
+  />
+  <LocationsGrid title={undefined} subtitle={undefined} />
+  <CtaBand />
+</Layout>
