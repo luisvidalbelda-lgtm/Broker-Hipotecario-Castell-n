@@ -8,9 +8,9 @@ export const business = {
     'Tu broker hipotecario en Castellón de la Plana. Comparamos más de 30 bancos para conseguirte la mejor hipoteca. Estudio gratuito y sin compromiso.',
   url: 'https://brokerhipotecariocastellon.es',
   email: 'info@brokerhipotecariocastellon.es',
-  phone: '+34864872186',
-  phoneDisplay: '864 87 21 86',
-  whatsapp: '34864872186',
+  phone: '+34864872892',
+  phoneDisplay: '864 87 28 92',
+  whatsapp: '34663495198',
   whatsappMessage: 'Hola, me interesa información sobre hipotecas',
   address: {
     street: 'Calle Egual, 34',
