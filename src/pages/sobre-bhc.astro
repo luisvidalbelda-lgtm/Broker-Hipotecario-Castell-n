@@ -4,8 +4,6 @@ import BreadcrumbNav from '../components/BreadcrumbNav.astro';
 import HeroInterior from '../components/HeroInterior.astro';
 import CtaBand from '../components/CtaBand.astro';
 import WhyBHC from '../components/WhyBHC.astro';
-import { Image } from 'astro:assets';
-import asesoramientoImg from '/public/img/asesoramiento-profesional.webp';
 ---
 
 <Layout
@@ -45,16 +43,15 @@ import asesoramientoImg from '/public/img/asesoramiento-profesional.webp';
             coincide con el tuyo: cerrar la operación con las mejores condiciones posibles.
           </p>
           <p>
-            Nuestro servicio para ti es <strong>gratuito</strong>. Los bancos nos retribuyen por traerles operaciones que cumplen
-            sus criterios — pero esa retribución es independiente del interés que te dan a ti. Si un banco nos paga más pero te
-            ofrece peor condición, no te lo vamos a recomendar.
+            Los bancos nos retribuyen por traerles operaciones que cumplen sus criterios — pero esa retribución es independiente
+            del interés que te dan a ti. Si un banco nos paga más pero te ofrece peor condición, no te lo vamos a recomendar.
           </p>
         </div>
       </div>
 
       <div class="lg:col-span-5">
         <div class="rounded-2xl overflow-hidden shadow-card border border-border sticky top-24">
-          <Image src={asesoramientoImg} alt="Asesoramiento hipotecario profesional con cliente firmando documentación" width={800} height={1000} class="w-full h-auto" />
+          <img src="/img/asesoramiento-profesional.webp" alt="Asesoramiento hipotecario profesional con cliente firmando documentación" width="800" height="1000" class="w-full h-auto" loading="lazy" />
         </div>
       </div>
     </div>
