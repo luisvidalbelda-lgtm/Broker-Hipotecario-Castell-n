@@ -3,15 +3,39 @@
 import { banks } from '../data/banks';
 ---
 
-<section class="bg-white border-y border-border">
-  <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-10">
-    <p class="text-center text-xs font-bold uppercase tracking-widest text-text-muted mb-6">
-      Comparamos con más de {banks.count} entidades bancarias
-    </p>
-    <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-text-soft font-medium text-sm">
-      {banks.names.slice(0, 12).map((name) => (
-        <span class="opacity-60 hover:opacity-100 transition-opacity">{name}</span>
+<section class="bg-white border-y border-border overflow-hidden py-10">
+  <p class="text-center text-xs font-bold uppercase tracking-widest text-text-muted mb-6">
+    Comparamos con más de {banks.count} entidades bancarias
+  </p>
+
+  <div class="relative">
+    <!-- máscara de degradado en los bordes -->
+    <div class="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+    <div class="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+
+    <div class="flex ticker-track">
+      <!-- lista duplicada para el loop infinito -->
+      {[...banks.names, ...banks.names].map((name) => (
+        <span class="ticker-item text-text-soft font-medium text-sm opacity-60 hover:opacity-100 transition-opacity whitespace-nowrap px-8">
+          {name}
+        </span>
       ))}
     </div>
   </div>
 </section>
+
+<style>
+  .ticker-track {
+    animation: ticker 25s linear infinite;
+    width: max-content;
+  }
+
+  .ticker-track:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes ticker {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+</style>
