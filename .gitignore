@@ -38,3 +38,8 @@ skills-lock.json
 
 # Logs
 *.log
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
