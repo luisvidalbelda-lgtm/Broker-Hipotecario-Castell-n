@@ -72,12 +72,12 @@ export const services: Service[] = [
     primaryKeyword: 'hipoteca segunda vivienda Castellón',
     metaTitle: 'Hipoteca segunda vivienda Castellón | BHC Broker Hipotecario',
     metaDescription:
-      'Hipoteca para segunda residencia en Castellón y costa (Benicàssim, Oropesa). Comparamos +30 bancos. Estudio gratis.',
+      'Hipoteca para segunda residencia en Castellón y costa (Benicàssim). Comparamos +30 bancos. Estudio sin compromiso.',
     icon: 'lucide:palmtree',
     intro:
       'La hipoteca para una segunda vivienda funciona distinta: menor porcentaje de financiación, plazos más cortos y bancos más exigentes. En BHC sabemos cuáles aceptan operaciones de segunda residencia en costa de Castellón con buenas condiciones.',
     what: [
-      'Hipotecas para segunda residencia en costa Castellón: Benicàssim, Oropesa, Peñíscola, Vinaròs.',
+      'Hipotecas para segunda residencia en Castellón y alrededores: Benicàssim, Vila-real, Almassora, Borriol.',
       'Hipotecas para inversión inmobiliaria (alquilar tu segunda vivienda).',
       'Refinanciación de segundas viviendas con condiciones mejorables.',
     ],
@@ -225,12 +225,12 @@ export const services: Service[] = [
     primaryKeyword: 'hipoteca no residentes Castellón',
     metaTitle: 'Hipoteca no residentes Castellón | Mortgage Spain — BHC',
     metaDescription:
-      'Hipoteca en España para extranjeros no residentes. Compra tu vivienda en Castellón, Benicàssim u Oropesa. Asesoramiento bilingüe.',
+      'Hipoteca en España para extranjeros no residentes. Compra tu vivienda en Castellón o Benicàssim. Asesoramiento bilingüe.',
     icon: 'lucide:globe',
     intro:
       'Si vives fuera de España pero quieres comprar vivienda en costa Castellón, los bancos te tratan distinto: financian un porcentaje menor (60-70%), piden más documentación y son más exigentes con el perfil. En BHC trabajamos a diario con compradores británicos, alemanes, belgas, holandeses y franceses.',
     what: [
-      'Hipotecas para no residentes en costa Castellón: Benicàssim, Oropesa, Peñíscola, Vinaròs.',
+      'Hipotecas para no residentes en Castellón y alrededores: Benicàssim, Vila-real, Almassora, Borriol.',
       'Asesoramiento en NIE (Número de Identificación de Extranjero) — necesario para escriturar.',
       'Acompañamiento en apertura de cuenta bancaria española.',
       'Coordinación con asesor fiscal si es necesario (ITP, Impuesto sobre Bienes Inmuebles).',
