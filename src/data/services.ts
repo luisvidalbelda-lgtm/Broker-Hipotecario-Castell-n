@@ -52,10 +52,6 @@ export const services: Service[] = [
     ],
     faq: [
       {
-        q: '¿Cuánto cobra BHC por buscarme la hipoteca?',
-        a: 'No cobramos al cliente. Los bancos nos retribuyen por traerles operaciones que cumplen sus criterios. Para ti el estudio y el servicio son completamente gratuitos.',
-      },
-      {
         q: '¿Cuánto tiempo tarda todo el proceso?',
         a: 'Desde el primer estudio hasta la firma, lo habitual son 4-8 semanas. Si la documentación está completa desde el inicio, puede cerrarse en 4 semanas. Casos complejos llegan a 10.',
       },

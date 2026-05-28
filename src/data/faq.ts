@@ -5,10 +5,6 @@ export const homeFaq = [
     a: 'Un broker hipotecario es un intermediario independiente entre tú y los bancos. Negocia por ti con varias entidades para conseguir las mejores condiciones. A diferencia de un comercial de banco, no defiende los intereses de una sola entidad — busca lo mejor para ti.',
   },
   {
-    q: '¿Cuánto cuesta el servicio de BHC?',
-    a: 'Para ti, 0 €. Los bancos nos retribuyen por traerles operaciones que cumplen sus criterios. Nuestro estudio inicial, asesoramiento, negociación y acompañamiento hasta la firma son completamente gratuitos.',
-  },
-  {
     q: '¿En qué se diferencia BHC de ir directo al banco?',
     a: 'Cuando vas al banco, te ofrecen su producto. Cuando vienes a nosotros, comparamos más de 30 entidades en paralelo para ofrecerte el mejor. Además, sabemos cuáles aceptan tu perfil y cuáles no — te ahorramos consultas inútiles.',
   },
